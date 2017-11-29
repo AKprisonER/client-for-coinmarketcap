@@ -1,0 +1,59 @@
+<ion-view view-title="CoinMarketCap">
+  <ion-nav-buttons side="left">
+      <button class="button button-clear button-positive" ng-click="modal2.show()">Full List</button>
+   </ion-nav-buttons>
+   <ion-nav-buttons side="right">
+      <button class="button button-clear" ng-click="modal.show()"><i class="icon ion-ios-settings"></i></button>
+   </ion-nav-buttons>
+   <ion-content has-bouncing="true" overflow-scroll="true" class="searchbarfix">
+      <ion-refresher pulling-text="Pull down to refresh..." spinner="dots" on-refresh="refreshCoins()"></ion-refresher>
+      <!-- content goes here Note: Cell height 78px-->
+      <ion-list>
+         <div class="bar bar-header item-input-inset">
+            <label class="item-input-wrapper">
+            <i class="icon ion-ios-search placeholder-icon"></i>
+            <input type="search" placeholder="Search" ng-model="search">
+            </label>
+            <button class="button button-clear button-positive" ng-click="openSortingyOptions();">{{$storage.sortingDisplay}}</button>
+         </div>
+         <ion-item ng-repeat="curr in currencies | filter:search | orderBy:$storage.listSorting:$storage.listSortingReverse"
+            class="item-remove-animate item-avatar item-icon-right"
+            type="item-text-wrap"
+            ng-click="cryptoDetail(curr)">
+            <img ng-src="https://files.coinmarketcap.com/static/img/coins/64x64/{{curr.id}}.png" class="no-border-radius">
+            <h2>{{curr.name}} <span ng-if="never">{{curr.volume_24h}}</span></h2>
+            <p class="large-display">{{$storage.mainCurrencySymbol}}{{curr.price | numberWithCommas}}<span ng-class="curr.percent_change_24h < 0 ? 'percRed' : 'percGreen'"> ({{curr.percent_change_24h}}%)</span></p>
+            <p class="small-display">{{$storage.mainCurrencySymbol}}{{curr.price | numberWithCommas}}</p>
+            <span class="badge rank" ng-if="$storage.settingsShowRank">{{curr.rank}}</span>
+            <span class="item-note item-note-top100 large-display">{{$storage.mainCurrencySymbol}}{{curr.market_cap | numberWithCommas}}</span>
+            <span class="item-note item-note-top100 small-display" ng-class="curr.percent_change_24h < 0 ? 'percRed' : 'percGreen'">{{curr.percent_change_24h}}%</span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+         </ion-item>
+      </ion-list>
+   </ion-content>
+   <script id="templates/modal.html" type="text/ng-template">
+	<ion-modal-view>
+	   <header class="bar bar-header bar-light">
+		  <h1 class="title">Settings</h1>
+		  <button class="button button-clear button-positive" ng-click="modal.hide()">Close</button>
+	   </header>
+	   <ion-content class="has-header">
+		  <ion-list>
+			 <ion-item ng-repeat="curr in currencies | filter:search | orderBy:$storage.listSorting:$storage.listSortingReverse"
+            class="item-remove-animate item-avatar item-icon-right"
+            type="item-text-wrap"
+            ng-click="cryptoDetail(curr)">
+            <img ng-src="https://files.coinmarketcap.com/static/img/coins/64x64/{{curr.id}}.png" class="no-border-radius">
+            <h2>{{curr.name}} <span ng-if="never">{{curr.volume_24h}}</span></h2>
+            <p class="large-display">{{$storage.mainCurrencySymbol}}{{curr.price | numberWithCommas}}<span ng-class="curr.percent_change_24h < 0 ? 'percRed' : 'percGreen'"> ({{curr.percent_change_24h}}%)</span></p>
+            <p class="small-display">{{$storage.mainCurrencySymbol}}{{curr.price | numberWithCommas}}</p>
+            <span class="badge rank" ng-if="$storage.settingsShowRank">{{curr.rank}}</span>
+            <span class="item-note item-note-top100 large-display">{{$storage.mainCurrencySymbol}}{{curr.market_cap | numberWithCommas}}</span>
+            <span class="item-note item-note-top100 small-display" ng-class="curr.percent_change_24h < 0 ? 'percRed' : 'percGreen'">{{curr.percent_change_24h}}%</span>
+            <i class="icon ion-chevron-right icon-accessory"></i>
+         </ion-item>
+		  </ion-list>
+	   </ion-content>
+	</ion-modal-view>
+   </script>
+</ion-view>

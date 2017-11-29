@@ -1,0 +1,16 @@
+<ion-view>
+   <ion-tabs class="tabs-icon-top tabs-light">
+      <ion-tab title="Top 100" icon-off="bitcoin-off" icon-on="bitcoin-on"
+         ng-click="openTab('main.topList')">
+         <ion-nav-view name="tab-top"></ion-nav-view>
+      </ion-tab>
+      <ion-tab title="Full List" icon-off="coins-off" icon-on="coins-on"
+         ng-click="openTab('main.fullList')">
+         <ion-nav-view name="tab-full"></ion-nav-view>
+      </ion-tab>
+      <ion-tab title="Global Info" icon-off="global-off" icon-on="global-on"
+         ng-click="openTab('main.globalInfo')">
+         <ion-nav-view name="tab-global"></ion-nav-view>
+      </ion-tab>
+   </ion-tabs>
+</ion-view>

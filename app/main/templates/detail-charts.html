@@ -1,0 +1,56 @@
+<ion-view view-title="{{$storage.cryptoDetail.symbol}} Charts">
+   <!-- do you want padding? -->
+   <div class="tabs-striped tabs-top tabs-light">
+      <div class="tabs">
+         <a class="tab-item" ng-click="changeTimespan('/1day');" ng-class="{ 'active': timespan === '/1day' }">
+         Today
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('/7day');" ng-class="{ 'active': timespan === '/7day' }">
+         1W
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('/30day');" ng-class="{ 'active': timespan === '/30day' }">
+         1M
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('/90day');" ng-class="{ 'active': timespan === '/90day' }">
+         3M
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('/180day');" ng-class="{ 'active': timespan === '/180day' }">
+         6M
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('/365day');" ng-class="{ 'active': timespan === '/365day' }">
+         1Y
+         </a>
+         <a class="tab-item" ng-click="changeTimespan('');" ng-class="{ 'active': timespan === '' }">
+          All
+         </a>
+      </div>
+   </div>
+   <ion-content class="has-header has-subheader" overflow-scroll="true">
+     <ion-refresher pulling-text="Pull down to refresh..." spinner="spiral" on-refresh="getChartData()"></ion-refresher>
+      <div class="card" ng-if="price_data.length">
+         <div class="item item-divider">
+            Price
+         </div>
+         <div class="item item-text-wrap">
+            <canvas id="price" class="chart chart-line" chart-data="price_data" chart-labels="price_labels" chart-legend="true" chart-series="series" chart-options="options" chart-colors="colors"></canvas>
+         </div>
+      </div>
+      <div class="card" ng-if="marketcap_data.length">
+         <div class="item item-divider">
+            Market Cap
+         </div>
+         <div class="item item-text-wrap">
+            <canvas id="market_cap" class="chart chart-line" chart-data="marketcap_data" chart-labels="marketcap_labels" chart-legend="true" chart-series="series" chart-options="options"></canvas>
+         </div>
+      </div>
+      <div class="card" ng-if="volume_data.length">
+         <div class="item item-divider">
+            Volume
+         </div>
+         <div class="item item-text-wrap">
+            <canvas id="volume" class="chart chart-line" chart-data="volume_data" chart-labels="volume_labels" chart-legend="true" chart-series="series" chart-options="options"></canvas>
+         </div>
+      </div>
+      <br>
+   </ion-content>
+</ion-view>

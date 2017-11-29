@@ -1,0 +1,25 @@
+angular.module('main').constant('apiURL', {
+  MAINLIST: 'https://api.coinmarketcap.com/v1/ticker/',
+  GLOBAL: 'https://api.coinmarketcap.com/v1/global/',
+  HISTORY: 'http://coinmarketcap.northpole.ro/history.json?coin=bitcoin&period=14days',
+  MARKETS: 'https://api.cryptonator.com/api/full/',
+  NEWS: 'https://api.condacore.com/coins/news'
+}).constant('currencySymbols', {
+  AUD: '$',
+  BRL: '$',
+  BTC: '\u20BF',
+  CAD: '$',
+  CHF: 'Fr',
+  CNY: '\xA5',
+  ETH: 'Ξ',
+  EUR: '\u20AC',
+  GBP: '\xA3',
+  HKD: '$',
+  IDR: 'Rp',
+  INR: '\u20B9',
+  JPY: '\xA5',
+  KRW: '\u20A9',
+  MXN: '$',
+  RUB: '\u20BD',
+  USD: '$'
+});

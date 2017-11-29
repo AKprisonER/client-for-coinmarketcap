@@ -1,0 +1,161 @@
+@charset "UTF-8";
+/* Black Flash Fix */
+
+[nav-view-transition="ios"][nav-view-direction="forward"],
+[nav-view-transition="ios"][nav-view-direction="back"] {
+    background-color: transparent !important;
+}
+ion-nav-view {
+    background-color: transparent !important;
+}
+/* Fix whitespace above Search Bar */
+.platform-ios ion-content.searchbarfix{
+  top: 44px !important
+}
+/* Custom Tabs */
+
+.tabs .tab-item .icon.global-off {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/global-off.svg');
+    background-size: contain;
+}
+.tabs .tab-item .icon.global-on {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/global-on.svg');
+    background-size: contain;
+}
+.tabs .tab-item .icon.bitcoin-off {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/bitcoin-off.svg');
+    background-size: contain;
+}
+.tabs .tab-item .icon.bitcoin-on {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/bitcoin-on.svg');
+    background-size: contain;
+}
+.tabs .tab-item .icon.coins-off {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/coins-off.svg');
+    background-size: contain;
+}
+.tabs .tab-item .icon.coins-on {
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 60%;
+    background-image: url('../assets/icons/coins-on.svg');
+    background-size: contain;
+}
+.item-avatar {
+    height: 72px !important;
+}
+/* Coin List */
+
+.item-note-top100 {
+    position: absolute !important;
+    float: right !important;
+    top: 25px !important;
+    right: 30px !important;
+}
+.item-note-all {
+    position: absolute !important;
+    right: 30px !important;
+}
+.no-border-radius {
+    border-radius: 0px !important;
+}
+.percRed {
+    color: #d14836 !important;
+}
+.percGreen {
+    color: #093 !important;
+}
+.rank {
+    left: 0 !important;
+    top: 0 !important;
+    opacity: 0.6 !important;
+}
+/* Detail page hero */
+
+.hero {
+    background-size: cover !important;
+    color: #fff !important;
+    height: 200px !important;
+    position: relative !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+.hero.no-header {
+    height: 244px !important;
+}
+.hero > .content {
+    bottom: 0 !important;
+    position: absolute !important;
+    text-align: center !important;
+    width: 100% !important;
+    z-index: 1 !important;
+}
+.hero > .content > .avatar {
+    background-position: center !important;
+    background-size: cover !important;
+    display: inline-block !important;
+    height: 88px !important;
+    left: auto !important;
+    margin-bottom: 10px !important;
+    position: relative !important;
+    width: 88px !important;
+}
+.hero h1 .hero h2,
+.hero h3,
+.hero h4,
+.hero h5,
+.hero h6 {
+    color: #666 !important;
+    margin: 0 !important;
+}
+.hero h4 {
+    color: #666 !important;
+    margin: 3px 0 16px !important;
+}
+.hero h1 > a,
+.hero h2 > a,
+.hero h3 > a,
+.hero h4 > a,
+.hero h5 > a,
+.hero h6 > a {
+    text-decoration: none !important;
+}
+.hero h1.title {
+    color: #666 !important;
+    font-size: 23px !important;
+    margin: 0 !important;
+    text-align: left !important;
+    padding-left: 80px !important;
+    line-height: 59px !important;
+}
+@media (min-width: 350px) {
+    .small-display {
+        display: none !important;
+    }
+}
+@media (max-width: 350px) {
+    .large-display {
+        display: none !important;
+    }
+}

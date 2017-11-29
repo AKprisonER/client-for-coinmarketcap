@@ -1,0 +1,13 @@
+<ion-view view-title="{{$storage.cryptoDetail.name}} News">
+   <!-- do you want padding? -->
+   <ion-content overflow-scroll="false">
+      <!-- content goes here -->
+      <ion-list>
+         <ion-item class="item-thumbnail-left item-text-wrap" collection-repeat="new in news" ng-click="openInBrowser(new.link)">
+            <img src="main/assets/images/placeholder.png" ng-src="{{new.image}}" style="object-fit: cover;">
+            <h2>{{new.title}}</h2>
+            <p>{{new.date}}</p>
+         </ion-item >
+      </ion-list>
+   </ion-content>
+</ion-view>

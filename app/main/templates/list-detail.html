@@ -1,0 +1,80 @@
+<ion-view view-title="Rank {{$storage.cryptoDetail.rank}}">
+   <ion-nav-buttons side="right">
+      <button class="button button-clear" ng-click="showActionSheet()"><i class="icon ion-share"></i></button>
+   </ion-nav-buttons>
+   <ion-content has-bouncing="true" ng-repeat="detail in details">
+      <ion-refresher pulling-text="Pull down to refresh..." spinner="spiral" on-refresh="getCurrencyDetails()"></ion-refresher>
+      <div class="hero has-mask ">
+         <div class="content">
+            <div class="avatar"><img ng-src="https://files.coinmarketcap.com/static/img/coins/128x128/{{detail.id}}.png" width="80"></div>
+            <h3><a class="dark">{{detail.name}} ({{detail.symbol}})</a></h3>
+            <h4>{{$storage.mainCurrencySymbol}}{{detail.price | numberWithCommas}}</h4>
+         </div>
+      </div>
+      <ion-item>
+         <div class="row">
+            <div class="col" style="border-right: thin solid #CCC;">
+               <center><strong>Change 1h</strong><br><span ng-class="detail.percent_change_1h < 0 ? 'percRed' : 'percGreen'">{{detail.percent_change_1h}}%</span></center>
+            </div>
+            <div class="col" style="border-right: thin solid #CCC;">
+               <center><strong>Change 24h</strong><br><span ng-class="detail.percent_change_24h < 0 ? 'percRed' : 'percGreen'">{{detail.percent_change_24h}}%</span></center>
+            </div>
+            <div class="col">
+               <center><strong>Change 7d</strong><br><span ng-class="detail.percent_change_7d < 0 ? 'percRed' : 'percGreen'">{{detail.percent_change_7d}}%</span></center>
+            </div>
+         </div>
+      </ion-item>
+      <ion-item>
+         Market Cap
+         <span class="item-note">
+         {{$storage.mainCurrencySymbol}}{{detail.market_cap | numberWithCommas}}
+         </span>
+      </ion-item>
+      <ion-item>
+         Volume 24h
+         <span class="item-note">
+         {{$storage.mainCurrencySymbol}}{{detail.volume_24h | numberWithCommas}}
+         </span>
+      </ion-item>
+      <ion-item>
+         Circulating Supply
+         <span class="item-note">
+         {{detail.available_supply | numberWithCommas}} {{detail.symbol}}
+         </span>
+      </ion-item>
+      <ion-item>
+         Total Supply
+         <span class="item-note">
+         {{detail.total_supply | numberWithCommas}} {{detail.symbol}}
+         </span>
+      </ion-item>
+      <ion-item class="item-divider">
+         More Information
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-left item-icon-right" ng-click="navigateTo(chartState)">
+         <i class="icon ion-stats-bars"></i>
+         Charts
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-left item-icon-right" ng-click="navigateTo(marketsState)">
+         <i class="icon"><img src="main/assets/icons/exchange.svg" width="30px"/></i>
+         Markets
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-remove-animate item-icon-left item-icon-right" ng-click="navigateTo(historyState)">
+         <i class="icon"><img src="main/assets/icons/calendar.svg" width="30px"/></i>
+         Historical Data
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item ng-if="detail.rank < 50" class="item-remove-animate item-icon-left item-icon-right" ng-click="navigateTo(newsState)">
+         <i class="icon ion-social-rss"></i>
+         News
+         <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <center><button class="button button-clear button-positive" ng-click="getCurrencyDetails()">
+         Updated: {{detail.last_updated * 1000 | date:'medium'}}
+         </button>
+      </center>
+      <br>
+   </ion-content>
+</ion-view>

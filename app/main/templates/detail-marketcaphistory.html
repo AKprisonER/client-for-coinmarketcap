@@ -1,0 +1,27 @@
+<ion-view view-title="{{$storage.cryptoDetail.symbol}} History">
+   <!-- do you want padding? -->
+   <div class="tabs-striped tabs-top tabs-light">
+         <div class="tabs">
+            <a class="tab-item" ng-click="showHistory('market_cap');" ng-class="{ 'active': selected === 'market_cap' }">
+            Market Cap
+            </a>
+            <a class="tab-item" ng-click="showHistory('price');" ng-class="{ 'active': selected === 'price' }">
+            Price
+            </a>
+            <a class="tab-item" ng-click="showHistory('volume');" ng-class="{ 'active': selected === 'volume' }">
+            Volume
+            </a>
+         </div>
+      </div>
+   <ion-content class="has-header has-subheader" overflow-scroll="false">
+      <!-- content goes here -->
+      <ion-list>
+         <ion-item collection-repeat="history in marketCapHistory | orderBy:'timestamp':true">
+            ${{history[1] | numberWithCommas}}
+            <span class="item-note">
+            {{history[0]  | date:'medium'}}
+            </span>
+         </ion-item>
+      </ion-list>
+   </ion-content>
+</ion-view>

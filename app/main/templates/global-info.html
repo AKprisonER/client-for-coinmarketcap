@@ -1,0 +1,35 @@
+<ion-view view-title="Global Info">
+   <ion-content has-bouncing="true" ng-repeat="global in globals">
+      <ion-refresher pulling-text="Pull down to refresh..." spinner="ripple" on-refresh="getGlobalInfo()"></ion-refresher>
+      <div class="hero has-mask ">
+         <div class="content">
+            <div class="avatar"><img ng-src="main/assets/images/logo.png" width="80"></div>
+            <h3><a class="dark">{{global.bitcoin_percentage_of_market_cap}}%</a></h3>
+            <h4>Bitcoin Dominance</h4>
+         </div>
+      </div>
+      <ion-item>
+         <div class="row">
+            <div class="col" style="border-right: thin solid #CCC;">
+               <center><strong>Total Market Cap</strong><br>{{symbol}}{{global.total_market_cap | number}}</center>
+            </div>
+            <div class="col">
+               <center><strong>Total 24h Volume</strong><br>{{symbol}}{{global.total_24h_volume | number}}</center>
+            </div>
+         </div>
+      </ion-item>
+      <ion-item>
+         <div class="row">
+            <div class="col" style="border-right: thin solid #CCC;">
+               <center><strong>Currencies</strong><br>{{global.active_currencies}}</center>
+            </div>
+            <div class="col" style="border-right: thin solid #CCC;">
+               <center><strong>Assets</strong><br>{{global.active_assets}}</center>
+            </div>
+            <div class="col">
+               <center><strong>Markets</strong><br>{{global.active_markets}}</center>
+            </div>
+         </div>
+      </ion-item>
+   </ion-content>
+</ion-view>

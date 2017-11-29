@@ -1,0 +1,23 @@
+{
+  "generator-m-ionic": {
+    "answers": {
+      "appName": "CoinMKTCap",
+      "appId": "com.condacore.coinmktcap",
+      "ionicCss": true,
+      "bowerPackages": [],
+      "platforms": [],
+      "plugins": [
+        "cordova-plugin-device",
+        "cordova-plugin-dialogs",
+        "cordova-plugin-inappbrowser",
+        "ionic-plugin-keyboard",
+        "cordova-plugin-network-information",
+        "cordova-plugin-splashscreen",
+        "cordova-plugin-statusbar"
+      ],
+      "appModule": "CoinMKTCap",
+      "ecosystems": [],
+      "install": "npm"
+    }
+  }
+}

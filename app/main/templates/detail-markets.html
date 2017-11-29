@@ -1,0 +1,66 @@
+<ion-view view-title="{{headerText}} {{$storage.shareSymbol}}/{{market}}">
+  <ion-nav-buttons side="right">
+      <button class="button button-clear button-positive" ng-click="showActionSheet()">Choose</button>
+   </ion-nav-buttons>
+  
+   <!-- do you want padding? -->
+   <div class="tabs-striped tabs-top tabs-light">
+         <div class="tabs">
+           <a class="tab-item" ng-click="changeMarket('BTC')" ng-class="{ 'active': market === 'BTC' }" ng-if="$storage.shareSymbol != 'BTC'">
+      		BTC
+            </a>
+            <a class="tab-item" ng-click="changeMarket('USD')" ng-class="{ 'active': market === 'USD' }">
+            USD
+            </a>
+            <a class="tab-item" ng-click="changeMarket('CNY')" ng-class="{ 'active': market === 'CNY' }">
+            CNY
+            </a>
+            <a class="tab-item" ng-click="changeMarket('KRW')" ng-class="{ 'active': market === 'KRW' }">
+            KRW
+            </a>
+            <a class="tab-item" ng-click="changeMarket('EUR')" ng-class="{ 'active': market === 'EUR' }">
+            EUR
+            </a>
+            <a class="tab-item" ng-click="changeMarket('ETH')" ng-class="{ 'active': market === 'ETH' }" ng-if="$storage.shareSymbol != 'ETH'">
+            ETH
+            </a>
+            <a class="tab-item" ng-click="changeMarket('USDT')" ng-class="{ 'active': market === 'USDT' }" ng-if="$storage.shareSymbol != 'USDT'">
+            USDT
+            </a>
+            <a class="tab-item" ng-click="changeMarket('BRL')" ng-class="{ 'active': market === 'BRL' }">
+            BRL
+            </a>
+            <a class="tab-item" ng-click="changeMarket('MXN')" ng-class="{ 'active': market === 'MXN' }">
+            MXN
+            </a>
+	   </div>
+      </div>
+   <ion-content class="has-header has-subheader" overflow-scroll="false">
+     <ion-refresher pulling-text="Pull down to refresh..." spinner="spiral" on-refresh="getMarkets()"></ion-refresher>
+      <!-- content goes here -->
+      <ion-list>
+         <ion-item collection-repeat="market in markets" item-height="50px">
+            {{market.MARKET}}
+            <span class="item-note" ng-if="marketValueToShow == 'PRICE'">
+            {{market.TOSYMBOL}} {{market.PRICE}}
+            </span>
+            <span class="item-note" ng-if="marketValueToShow == 'VOLUME24HOUR'">
+            {{market.TOSYMBOL}} {{market.VOLUME24HOUR}}
+            </span>
+            <span class="item-note" ng-if="marketValueToShow == 'OPEN24HOUR'">
+            {{market.TOSYMBOL}} {{market.OPEN24HOUR}}
+            </span>
+            <span class="item-note" ng-if="marketValueToShow == 'HIGH24HOUR'">
+            {{market.TOSYMBOL}} {{market.HIGH24HOUR}}
+            </span>
+            <span class="item-note" ng-if="marketValueToShow == 'LOW24HOUR'">
+            {{market.TOSYMBOL}} {{market.LOW24HOUR}}
+            </span>
+         </ion-item>
+      </ion-list>
+      <center><button ng-if="markets.length" class="button button-clear button-positive" ng-click="getMarkets()">
+         Updated: {{timestamp * 1000 | date:'medium'}}
+         </button>
+      </center>
+   </ion-content>
+</ion-view>
